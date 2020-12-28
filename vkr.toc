@@ -1,9 +1,0 @@
-\selectlanguage *{russian}
-\contentsline {section}{\numberline {1}Введение}{3}{section.1}%
-\contentsline {section}{\numberline {2}Постановка задачи}{4}{section.2}%
-\contentsline {section}{\numberline {3}Обзор}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Синтаксические анализаторы}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Menhir}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Примеры ошибок}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Реализация дополнительных правил}{8}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Реализация дополнительных правил восстановления от ошибок}{9}{section.4}%
