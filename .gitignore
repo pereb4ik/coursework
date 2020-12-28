@@ -9,3 +9,4 @@
 *.pdf
 /.aspell*
 /*.synctex.gz
+.DS_Store
