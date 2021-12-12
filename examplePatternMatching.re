@@ -4,4 +4,4 @@ let greeting = person =>
   | Director => "Hello Director."
   | Student("Andrew") => "Still here Ilya?"
   | Student(anyOtherName) => "Hey, " ++ anyOtherName ++ "."
-  };
+  }
