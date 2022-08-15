@@ -19,13 +19,15 @@
 
 Так же добавлены предупреждения (warning) для всех синтаксических конструкций перечисленных выше. И реализовано быстрое исправление кода (<<Quick fix>>) в OCaml-LSP, которое заменяет {\it match with} и {\it struct end} на подходящие языку Reason ключевые слова.
 \begin{figure}[h]
+%\fbox{
 \begin{subfigure}{0.5\textwidth}
 	\includegraphics[width=\linewidth]{screenshots/05.png}
 \end{subfigure}
+%}
 \begin{subfigure}{0.5\textwidth}
 	\includegraphics[width=\linewidth]{screenshots/06.png}
 \end{subfigure}
-\caption{Примеры}
+\caption{Примеры предупреждений}
 \end{figure}
 
 \newpage
@@ -58,15 +60,27 @@
 	\label{fix}%fig3
 \end{figure}
 
-Результаты проделанной работы можно наблюдать в соответсвующих репозиториях. Ссылки на списки коммитов Reason\footnote[1]{ \url{https://github.com/pereb4ik/reason/commits?author=pereb4ik} },
-OCaml-LSP\footnote[2]{ \url{https://github.com/pereb4ik/ocaml-lsp/commits?author=pereb4ik} },
-merlin\footnote[3]{ \url{https://github.com/pereb4ik/merlin/commits/lsp?author=pereb4ik} }.
+Результаты проделанной работы можно наблюдать в соответсвующих репозиториях. Ссылки на списки коммитов Reason\footnote{ \url{https://github.com/pereb4ik/reason/commits?author=pereb4ik} (accessed: 8.08.2022) },
+OCaml-LSP\footnote{ \url{https://github.com/pereb4ik/ocaml-lsp/commits?author=pereb4ik} (accessed: 8.08.2022) },
+merlin\footnote{ \url{https://github.com/pereb4ik/merlin/commits/lsp?author=pereb4ik} (accessed: 8.08.2022) }.
 \newpage
 
+\subsection{Архитектура}
+\begin{figure}[h]
+%\begin{subfigure}{0.5\textwidth}
+	\includegraphics[width=\linewidth]{graph.pdf}
+%\end{subfigure}
+\caption{Архитектура расширения}
+\end{figure}
+Поддержка OCaml в Reason реализована через новые синтаксические правила для парсера. Для этих правил так же созданы предупреждения (warnings), как новый тип reason\_warning, по примеру существующего в Reason типа reason\_error. Во время работы парсера предупреждения выкидываются из него и собираются. Далее они, с помощью добавленной функции warning\_attribute, превращаются в атрибуты AST и вместе с ним передаются в merlin, откуда идут в ocaml-lsp и в итоге в IDE. Необходимая поддержка атрибутов reason.warning добавлена на стороне merlin.
+
+Поддержка Reason в OCaml реализована через новые правила для парсера и расширение стандартного списка предупреждений OCaml.
+
+Функции исправления кода в ocaml-lsp как для Reason, так и для OCaml созданы по примеру action\_add\_rec, добавляющей слово {\it rec} перед рекурсивной функцией, если его еще не было.
+
 \subsection{Установка}
-Необходимая версия OCaml~--- 4.13.1/4.13.
+Необходимая версия OCaml~--- 4.13.1/4.13. Так же понадобится opam.
  
-Reason устанавливается через:
 % ":" not italic, i don't know
 \lstset{emph={https}, emphstyle={\itshape \small} }
 \lstset{basicstyle=\ttfamily}
@@ -74,16 +88,15 @@ Reason устанавливается через:
 \begin{lstlisting}[frame=single,language=C]
 opam pin add reason https://github.com/pereb4ik/reason.git
 \end{lstlisting}
-\caption{}
+\caption{Команда установки Reason}
 \end{example}
-При необходимости так же rtop:
 \begin{example}
 \begin{lstlisting}[frame=single,language=C]
 opam pin add rtop https://github.com/pereb4ik/reason.git
 \end{lstlisting}
-\caption{}
+\caption{Команда установки rtop}
 \end{example}
-Для тестирования функций IDE, умной замены кода <<Quick fix>> понадобится Visual Studio Code (хотя ocaml-lsp можно использовать с другими редакторами) с расширением OCaml Platform\footnote[4]{ \url{https://marketplace.visualstudio.com/items?itemName=ocamllabs.ocaml-platform} } от OCaml Labs. И пакет ocaml-lsp <<нашей>> версии:
+Для тестирования функций IDE таких, как умная замена кода <<Quick fix>>, понадобится Visual Studio Code (хотя ocaml-lsp можно использовать с другими редакторами) с расширением OCaml Platform от OCaml Labs. И пакет ocaml-lsp <<нашей>> версии:
 \begin{example}
 \begin{lstlisting}[frame=single,
 language=C,
@@ -92,5 +105,5 @@ literate={-}{-}1
 ]
 opam pin add ocaml-lsp-server https://github.com/pereb4ik/ocaml-lsp.git
 \end{lstlisting}
-\caption{}
+\caption{Команда установки ocaml-lsp-server}
 \end{example}
