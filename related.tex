@@ -20,7 +20,7 @@ L~--- здесь означает сканирование входного по
 \subsection{Menhir}
 Построение анализаторов LR(1) вручную достаточно трудоемкий процесс, поэтому чаще всего пользуются генераторами синтаксических анализаторов. 
 
-Генератор синтаксических анализаторов --- это программа, которая по спецификации грамматики строит синтаксический анализатор. Одним из таких генераторов и является Menhir~\cite{ME}. Он был выбран командой Reason, как лучшая, по сравнению с ocamlyacc, версия генераторов синтаксических анализаторов.
+Генератор синтаксических анализаторов --- это программа, которая по спецификации грамматики строит синтаксический анализатор. Одним из таких генераторов и является Menhir~\cite{ME}. Он был выбран командой Reason, как лучшая, по сравнению с ocamlyacc~\cite{ocamlyacc}, версия генераторов синтаксических анализаторов.
 
 
 
@@ -34,13 +34,13 @@ L~--- здесь означает сканирование входного по
 \begin{example}
 	\begin{subexample}[b]{\textwidth}
 		\lstinputlisting[frame=single,language=Caml]{examplePatternMatching.ml}
-		\caption{}
+		\caption{Код OCaml}
 	\end{subexample}
 	\hfill
 	
 	\begin{subexample}[b]{\textwidth}
 		\lstinputlisting[frame=single, language=Caml]{examplePatternMatching.re}
-		\caption{}
+		\caption{Код Reason}
 	\end{subexample}
 \caption{Сопоставление с образцом}\label{l1}
 \end{example}
@@ -55,11 +55,11 @@ L~--- здесь означает сканирование входного по
 %\begin{multicols}{2}
 	\begin{subexample}{0.5\textwidth}
 		\lstinputlisting[frame=single, language=Caml]{forloop.ml}
-		\caption{}
+		\caption{Код OCaml}
 	\end{subexample}
 	\begin{subexample}{0.5\textwidth}
 		\lstinputlisting[frame=single, language=Caml]{forloop.re}
-		\caption{}
+		\caption{Код Reason}
 	\end{subexample}
 %\end{multicols}
 \caption{Пример цикла}\label{l2}
@@ -75,11 +75,11 @@ L~--- здесь означает сканирование входного по
 %\begin{multicols}{2}
 	\begin{subexample}{0.5\textwidth}
 		\lstinputlisting[frame=single, language=Caml]{record.ml}
-		\caption{}
+		\caption{Код OCaml}
 	\end{subexample}
 	\begin{subexample}{0.5\textwidth}
 		\lstinputlisting[frame=single, language=Caml]{record.re}
-		\caption{}
+		\caption{Код Reason}
 	\end{subexample}
 %\end{multicols}
 \caption{Пример записи}\label{l3}
